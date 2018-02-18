@@ -1,3 +1,4 @@
 argparse==1.2.1
+page-objects==1.1.0
 selenium==3.9.0
 wsgiref==0.1.2

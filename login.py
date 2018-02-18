@@ -1,6 +1,8 @@
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from grammarly_page import GrammarlyLogin
+import time
 
 class GrammarlyGeneralTest(unittest.TestCase):
 
@@ -15,9 +17,13 @@ class GrammarlyGeneralTest(unittest.TestCase):
         # )
 
     def test_grammarly_in_title(self):
-        driver = self.driver
-        driver.get("https://grammarly.com")
+        self.driver.get("https://grammarly.com")
         assert "Grammarly" in driver.title
+
+    def test_login(self):
+        page_login = GrammarlyLogin(self.driver)
+        page_login.make_login('za2217279@mvrht.net', 'test123')
+        time.sleep(10)
 
     def tearDown(self):
         self.driver.close()
