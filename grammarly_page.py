@@ -1,6 +1,7 @@
 from page_objects import PageObject, PageElement
 import time
 
+
 class GrammarlyLogin(PageObject):
     username = PageElement(css='input[type="email"]')
     password = PageElement(css='input[type="password"]')
@@ -26,3 +27,14 @@ class GrammarlyNewDocument(PageObject):
         self.new_document.click()
         time.sleep(2)
 
+
+class GrammarlyDocument(PageObject):
+
+    title = PageElement(css='input[type="text"]')
+    text = PageElement(id_='textarea')
+
+    def put_title(self, title):
+        self.title = title
+
+    def put_text(self, text):
+        self.text = text
