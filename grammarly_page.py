@@ -1,4 +1,5 @@
 from page_objects import PageObject, PageElement
+import time
 
 class GrammarlyLogin(PageObject):
     username = PageElement(css='input[type="email"]')
@@ -12,5 +13,16 @@ class GrammarlyLogin(PageObject):
         self.username = username
         self.password = password
         self.login.click()
+        #TODO replace this with Wait.Untill selenium feature.
+        time.sleep(2)
 
+
+class GrammarlyNewDocument(PageObject):
+    uri = 'https://app.grammarly.com/'
+    new_document = PageElement(css='div[role="button"]')
+
+    def make_new_document(self, name=None):
+        self.get(self.uri)
+        self.new_document.click()
+        time.sleep(2)
 
