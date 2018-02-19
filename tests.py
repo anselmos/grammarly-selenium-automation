@@ -11,12 +11,12 @@ class GrammarlyGeneralTest(unittest.TestCase):
     def setUp(self):
         # for dev I'll use only visible browser instead of no-gui one.
         # but for production, it will use the no-gui one.
-        # self.driver = webdriver.Firefox()
+        self.driver = webdriver.Firefox()
         # TODO uncomment it when finished coding.
-        self.driver = webdriver.Remote(
-            command_executor='http://127.0.0.1:4444/wd/hub',
-            desired_capabilities={'browserName': 'firefox', 'javascriptEnabled': True}
-        )
+        # self.driver = webdriver.Remote(
+        #     command_executor='http://127.0.0.1:4444/wd/hub',
+        #     desired_capabilities={'browserName': 'firefox', 'javascriptEnabled': True}
+        # )
 
 
     def test_grammarly_in_title(self):
@@ -61,6 +61,42 @@ class GrammarlyGeneralTest(unittest.TestCase):
         self.assert_title(page_doc)
         self.assert_text(page_doc)
 
+    def test_simple_text_gather_html(self):
+        """ This test is suppose to return html """
+        page_login = GrammarlyLogin(self.driver)
+        page_login.make_login('za2217279@mvrht.net', 'test123')
+        page_new_doc = GrammarlyNewDocument(self.driver)
+        page_new_doc.make_new_document("")
+        page_doc = GrammarlyDocument(self.driver)
+        text_to_put = "A simple \n\
+            Multiline \n\
+            text \n\
+            That wraps \n\
+            after max \n\
+            2 words. \n\
+        "
+        page_doc.text = text_to_put
+        time.sleep(10)
+        print self.driver.page_source
+
+    def test_get_page_source(self):
+        page_login = GrammarlyLogin(self.driver)
+        page_login.make_login('za2217279@mvrht.net', 'test123')
+        page_new_doc = GrammarlyNewDocument(self.driver)
+        page_new_doc.make_new_document("")
+        page_doc = GrammarlyDocument(self.driver)
+        text_to_put = "A simple \n\
+            Multiline \n\
+            text \n\
+            That wraps \n\
+            after max \n\
+            2 words. \n\
+        "
+        page_doc.put_text(text_to_put)
+        page_source = GrammarlyDocument(self.driver)
+        actual_source = page_source.get_page_source()
+        self.assertTrue("<html" in actual_source and "</html" in actual_source)
+
     def assert_title(self, page_doc):
         title_expected = "NewTestTitle"
         page_doc.put_title(title_expected)
@@ -80,3 +116,5 @@ class GrammarlyGeneralTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+    # onlyone = GrammarlyGeneralTest()
+    # onlyone.test_simple_text_gather_html()

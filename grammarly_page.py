@@ -32,9 +32,16 @@ class GrammarlyDocument(PageObject):
 
     title = PageElement(css='input[type="text"]')
     text = PageElement(id_='textarea')
+    # This button below will only be visible for grammarly premium users.
+    score_button = PageElement(css='span[class="_ff9902-score"]')
+    download_pdf_btn = PageElement(css='div[class="_d0e45e-button _d0e45e-medium"]')
 
     def put_title(self, title):
         self.title = title
 
     def put_text(self, text):
         self.text = text
+        time.sleep(10)
+
+    def get_page_source(self):
+        return self.w.page_source
