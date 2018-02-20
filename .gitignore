@@ -115,3 +115,5 @@ tags
 
 
 # End of https://www.gitignore.io/api/vim,python
+# Adds pycharm conf files:
+*.idea

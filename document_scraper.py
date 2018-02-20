@@ -20,3 +20,19 @@ class DocumentScraper(object):
     def iterate_over_warnings(self):
         for innerelement in self.get_all_warnings():
             print innerelement.text
+
+    def find_all_issues(self):
+        return self.bs.findAll('div', {'class': '_ed4374-title'})
+
+    def return_issues_by_type(self):
+        issues = self.find_all_issues()
+        output = {}
+        for issue in issues:
+            key = issue.contents[0].attrs['class'][0]
+            try:
+                output[key].append(issue.contents[0].contents)
+            except KeyError:
+                output[key] = [issue.contents[0].contents]
+
+        return output
+

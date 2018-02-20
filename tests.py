@@ -116,5 +116,3 @@ class GrammarlyGeneralTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-    # onlyone = GrammarlyGeneralTest()
-    # onlyone.test_simple_text_gather_html()
