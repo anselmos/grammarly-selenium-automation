@@ -48,5 +48,9 @@ class GrammarlyScrapingTests(unittest.TestCase):
         assert len(issues_by_type['_ed4374-titleReplacement']) == 11
 
 
+    def tearDown(self):
+        try: self.driver.close()
+        except: pass
+
 if __name__ == "__main__":
     unittest.main()
