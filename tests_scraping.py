@@ -46,7 +46,10 @@ class GrammarlyScrapingTests(unittest.TestCase):
         assert u'_ed4374-titleReplacement' in issues_by_type
         assert len(issues_by_type['_ed4374-plainTextTitle']) == 3
         assert len(issues_by_type['_ed4374-titleReplacement']) == 11
-
+        self.driver.maximize_window()
+        # making a screenshot!:
+        self.driver.save_screenshot('grammarly_checks.png')
+        self.driver.get_screenshot_as_file('grammarly_checks2.png')
 
     def tearDown(self):
         try: self.driver.close()
