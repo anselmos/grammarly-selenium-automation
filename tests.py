@@ -11,12 +11,11 @@ class GrammarlyGeneralTest(unittest.TestCase):
     def setUp(self):
         # for dev I'll use only visible browser instead of no-gui one.
         # but for production, it will use the no-gui one.
-        self.driver = webdriver.Firefox()
-        # TODO uncomment it when finished coding.
-        # self.driver = webdriver.Remote(
-        #     command_executor='http://127.0.0.1:4444/wd/hub',
-        #     desired_capabilities={'browserName': 'firefox', 'javascriptEnabled': True}
-        # )
+        # self.driver = webdriver.Firefox()
+        self.driver = webdriver.Remote(
+            command_executor='http://127.0.0.1:4444/wd/hub',
+            desired_capabilities={'browserName': 'firefox', 'javascriptEnabled': True}
+        )
 
 
     def test_grammarly_in_title(self):
