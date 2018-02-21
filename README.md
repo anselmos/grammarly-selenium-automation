@@ -1,5 +1,7 @@
 # Grammarly Selenium Automation Project
 
+[![Build Status](https://travis-ci.org/anselmos/grammarly-selenium-automation.svg?branch=master)](https://travis-ci.org/anselmos/grammarly-selenium-automation)
+
 This project is a Prof of Concept that automation with [Grammarly](http://grammarly.com/) even without API is possible.
 
 Project uses [Selenium](https://www.seleniumhq.org/) with [Beautiful Soap](https://www.crummy.com/software/BeautifulSoup/) to scrape data from Grammarly document checking.
