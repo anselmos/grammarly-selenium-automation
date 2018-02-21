@@ -76,7 +76,6 @@ class GrammarlyGeneralTest(unittest.TestCase):
         "
         page_doc.text = text_to_put
         time.sleep(10)
-        print self.driver.page_source
 
     def test_get_page_source(self):
         page_login = GrammarlyLogin(self.driver)
