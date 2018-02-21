@@ -109,8 +109,5 @@ class GrammarlyGeneralTest(unittest.TestCase):
         actual_doc = GrammarlyDocument(self.driver)
         self.assertEquals(page_doc.text, actual_doc.text)
 
-    def tearDown(self):
-        self.driver.close()
-
 if __name__ == "__main__":
     unittest.main()
