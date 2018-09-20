@@ -5,17 +5,20 @@ from grammarly_page import GrammarlyLogin
 from grammarly_page import GrammarlyNewDocument
 from grammarly_page import GrammarlyDocument
 import time
+import os
+
 
 class GrammarlyGeneralTest(unittest.TestCase):
 
     def setUp(self):
+        geckodriver_path = os.path.dirname(os.path.realpath(__file__)) + '/geckodriver'
         # for dev I'll use only visible browser instead of no-gui one.
         # but for production, it will use the no-gui one.
-        # self.driver = webdriver.Firefox()
-        self.driver = webdriver.Remote(
-            command_executor='http://127.0.0.1:4444/wd/hub',
-            desired_capabilities={'browserName': 'firefox', 'javascriptEnabled': True}
-        )
+        self.driver = webdriver.Firefox(executable_path=geckodriver_path)
+        # self.driver = webdriver.Remote(
+        #     command_executor='http://127.0.0.1:4444/wd/hub',
+        #     desired_capabilities={'browserName': 'firefox', 'javascriptEnabled': True}
+        # )
 
 
     def test_grammarly_in_title(self):
